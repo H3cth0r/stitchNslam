@@ -1,0 +1,7 @@
+# Ignore mac files
+*.DS_Store
+
+# Ignore images
+*.jpeg
+*.png
+*.jpg
