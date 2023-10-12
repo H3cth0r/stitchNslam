@@ -5,3 +5,6 @@
 *.jpeg
 *.png
 *.jpg
+
+# Ignore videos
+*.mp4
