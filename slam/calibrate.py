@@ -54,10 +54,16 @@ class Calibrator:
         ret, matrix, distortion, r_vecs, t_vecs = cv2.calibrateCamera(
                                                     _3dPoints, _2dPoints, grayColor.shape[::-1], None, None
                                                   )
-        return matrix
+        P = np.zeros((3, 4))
+        P[:3, :3] = matrix
+        P[:, 3] = np.array([0, 0, 0])
+        return matrix, P
 
 if __name__ == "__main__":
     cal             = Calibrator()
-    matrix          = cal.calibrate()
+    matrix, P       = cal.calibrate()
     np.save("camera_calibration_matrix.npy", matrix)
+    np.save("camera_projection_matrix.npy", P)
     print(matrix)
+    print("="*20)
+    print(P)

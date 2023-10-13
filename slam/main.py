@@ -108,6 +108,8 @@ if __name__ == "__main__":
         pts3D /= pts3D[:, 3][:, np.newaxis]
         feature_3d_points.extend(pts3D[:, :3])
 
+        for pt in pts2:
+            cv2.circle(frame, (int(pt[0]), int(pt[1])), 5, (0, 255, 0), -1)
         cv2.imshow('Frame with Feature Points', frame_with_points)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
