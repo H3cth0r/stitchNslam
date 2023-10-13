@@ -104,6 +104,7 @@ def plot_camera_trajectory(transformation_matrices):
     X = [pose[0, 3] for pose in camera_positions]
     Y = [pose[1, 3] for pose in camera_positions]
     Z = [pose[2, 3] for pose in camera_positions]
+    Z = np.zeros(len(Z))
 
     # Create a 3D plot of the camera trajectory
     fig = plt.figure()
@@ -132,8 +133,6 @@ if __name__ == "__main__":
         q1, q2          = visualOdometry.get_matches(prev_frame, cur_frame)
         transf          = visualOdometry.get_pose(q1, q2)
         prev_frame      = cur_frame
-        print("="*60)
-        print(transf)
         transformation_matrices.append(transf)
     plot_camera_trajectory(transformation_matrices)
 
